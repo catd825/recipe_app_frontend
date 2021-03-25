@@ -14,12 +14,12 @@ useEffect( () => {
     fetchRecipes();
   }, []);
 
-  console.log(recipes.length)
+//   console.log(recipes.length)
   return (
     <div>
       {recipes.length !== 0 ? recipes.map(data => <div><img alt="img" style={{ height: '250px'}}src={data.img_url} /> {data.title} </div>) : null}
     </div>
   )
-}
+};
 
 export default RecipeContainer
