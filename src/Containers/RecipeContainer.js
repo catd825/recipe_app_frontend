@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react'
+import RecipeItem from '../Components/RecipeItem'
 
 function RecipeContainer() {
 const [recipes, recipeState] = useState([]);
 const recipeUrl = 'http://localhost:3000/recipes'
 
 useEffect( () => {
-    const fetchRecipes = async  () => {
+    const fetchRecipes = async () => {
         const response = await fetch(recipeUrl)
         const json = await response.json();
 
@@ -14,10 +15,13 @@ useEffect( () => {
     fetchRecipes();
   }, []);
 
-//   console.log(recipes.length)
+  const recipeCard = () => {
+    return recipes.map(recipe => <RecipeItem key={recipe.id} data={recipe} />)
+  }
+
   return (
     <div>
-      {recipes.length !== 0 ? recipes.map(data => <div><img alt="img" style={{ height: '250px'}}src={data.img_url} /> {data.title} </div>) : null}
+      {recipeCard()}
     </div>
   );
 };

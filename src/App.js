@@ -1,6 +1,6 @@
 import './App.css';
-// import React, { useState, useEffect } from 'react'
 import RecipeContainer from './Containers/RecipeContainer'
+import Navbar from './Components/Navbar'
 
 function App() {
 
@@ -11,12 +11,11 @@ function App() {
   //   console.log("favorites", json)
   // };
 
-
   // fetchFavorites();
-
 
   return (
     <div className="App">
+      <Navbar />
       <RecipeContainer />
     </div>
   );
