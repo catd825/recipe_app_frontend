@@ -22,4 +22,4 @@ useEffect( () => {
   );
 };
 
-export default RecipeContainer
+export default RecipeContainer;
