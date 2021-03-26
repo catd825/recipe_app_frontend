@@ -5,6 +5,7 @@ import Navbar from './Components/Navbar'
 function App() {
 
 
+
   // const fetchFavorites = async () => {
   //   const response = await fetch('http://localhost:3000/favorite_recipes');
   //   const json = await response.json();

@@ -19,6 +19,7 @@ useEffect( () => {
     return recipes.map(recipe => <RecipeItem key={recipe.id} data={recipe} />)
   }
 
+  console.log(recipes)
   return (
     <div>
       {recipeCard()}
