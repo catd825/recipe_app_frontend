@@ -1,9 +1,9 @@
-// import '../App.css';
+// import '../Home.css';
 import RecipeContainer from '../Containers/RecipeContainer'
 import Navbar from '../Components/Navbar'
 
 
-function App() {
+function Home() {
   return (
     <div>
       <Navbar />
@@ -12,4 +12,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;

@@ -29,10 +29,10 @@
       "static/chunks/webpack.js",
       "static/chunks/pages/_error.js"
     ],
-    "/create_recipe": [
+    "/my_recipes": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
-      "static/chunks/pages/create_recipe.js"
+      "static/chunks/pages/my_recipes.js"
     ]
   },
   "ampFirstPages": []

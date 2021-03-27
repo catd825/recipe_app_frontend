@@ -7,8 +7,13 @@ export default function Navbar () {
             <Link href="/create_recipe" passHref={true}>
                 Add Recipe 
             </Link> 
-                / View your saved recipes / View your created recipes
-                / <Link href="/" passHref={true}>
+            <Link href="/saved_recipes" passHref={true}>
+                View your saved recipes 
+            </Link>
+            <Link href="/my_recipes" passHref={true}>
+                View your created recipes 
+            </Link>
+            <Link href="/" passHref={true}>
                 Go Home 
             </Link>  </b>
         </div>

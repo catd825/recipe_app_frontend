@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import RecipeItem from '../Components/RecipeItem'
 
 function RecipeContainer() {
-const [recipes, recipeState] = useState([]);
+const [recipes, setRecipes] = useState([]);
 const recipeUrl = 'http://localhost:3000/recipes'
 
 useEffect( () => {
@@ -10,7 +10,7 @@ useEffect( () => {
         const response = await fetch(recipeUrl)
         const json = await response.json();
 
-        recipeState(json);
+        setRecipes(json);
     };
     fetchRecipes();
   }, []);
