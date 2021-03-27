@@ -35,7 +35,6 @@ export default function Form () {
             },
             body: JSON.stringify(formData)
         }
-        // debugger
 
             fetch('http://localhost:3000/recipes', configObj)
             .then(res => res.json())

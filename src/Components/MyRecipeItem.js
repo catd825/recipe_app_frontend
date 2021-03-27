@@ -1,13 +1,14 @@
-export default function MyRecipeItem (props) {
-    // console.log("recipe creator id", props.data.recipe_creator_id)
-    const current_user = 16
-    
+import Link from 'next/link';
+import { CURRENT_USER } from '../current_user'
+
+export default function MyRecipeItem ({data}) {
+    const current_user = CURRENT_USER
     return(
         <>
-        {props.data.recipe_creator_id === current_user ? 
+        {data.recipe_creator_id === current_user ? 
         <div> 
-            <img src={props.data.img_url} style={{height:'250px'}} alt='' />
-            <p>{props.data.title}</p>
+            <img src={data.img_url} style={{height:'250px'}} alt='' />
+            <p><Link key={data.id} href={'/' + data.id}>{data.title}</Link></p>
         </div> : null }
         </>
     )
