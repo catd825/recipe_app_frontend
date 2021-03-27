@@ -1,11 +1,11 @@
 import Navbar from '../Components/Navbar'
-import RecipeForm from '../Components/RecipeForm'
+import Form from '../Components/Form'
 
 export default function CreateRecipe () {
     return (
     <>
         <Navbar />
-        <RecipeForm />
+        <Form />
     </>
     )
 }

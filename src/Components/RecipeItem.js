@@ -1,5 +1,3 @@
-
-
 export default function RecipeItem (props) {
     console.log(props)
     return(
