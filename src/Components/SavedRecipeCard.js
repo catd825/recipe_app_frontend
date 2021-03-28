@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { CURRENT_USER } from '../current_user'
 
 export default function SavedRecipeCard ( {data} ) {
@@ -11,7 +12,7 @@ export default function SavedRecipeCard ( {data} ) {
         // 'return'
         <div> 
             <img src={data.recipe_img} style={{height:'250px'}} alt='' />
-            <p>{data.recipe_name}</p>
+            <p><Link key={data.id} href={'/recipes/' + data.id}>{data.recipe_name}</Link></p>
         </div> 
         : null}
         </>

@@ -8,7 +8,7 @@ export default function MyRecipeItem ({data}) {
         {data.recipe_creator_id === current_user ? 
         <div> 
             <img src={data.img_url} style={{height:'250px'}} alt='' />
-            <p><Link key={data.id} href={'/' + data.id}>{data.title}</Link></p>
+            <p><Link key={data.id} href={'/recipes/' + data.id}>{data.title}</Link></p>
         </div> : null }
         </>
     )

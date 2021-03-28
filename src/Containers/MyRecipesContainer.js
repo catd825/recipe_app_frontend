@@ -11,10 +11,9 @@ export default function MyRecipesContainer () {
     useEffect( () => {
         const fetchMyRecipes = async () => {
             const response = await fetch(recipeUrl)
-            const json = await response.json();
+            const data = await response.json();
 
-            console.log(json)
-            setMyRecipes(json)
+            setMyRecipes(data)
         };
         fetchMyRecipes();
     }, []);

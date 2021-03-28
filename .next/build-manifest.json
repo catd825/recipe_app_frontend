@@ -28,6 +28,11 @@
       "static/chunks/main.js",
       "static/chunks/webpack.js",
       "static/chunks/pages/create_recipe.js"
+    ],
+    "/recipes/[id]": [
+      "static/chunks/main.js",
+      "static/chunks/webpack.js",
+      "static/chunks/pages/recipes/[id].js"
     ]
   },
   "ampFirstPages": []
