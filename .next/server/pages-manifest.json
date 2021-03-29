@@ -2,8 +2,8 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/recipes/[id]": "pages/recipes/[id].js",
   "/": "pages/index.js",
   "/saved_recipes": "pages/saved_recipes.js",
-  "/next/dist/pages/_error": "pages/next/dist/pages/_error.js"
+  "/next/dist/pages/_error": "pages/next/dist/pages/_error.js",
+  "/recipes/[id]": "pages/recipes/[id].js"
 }
