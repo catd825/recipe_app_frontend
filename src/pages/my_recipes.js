@@ -4,7 +4,6 @@ import MyRecipesContainer from '../Containers/MyRecipesContainer'
 export default function Home () {
     return (
         <>
-            <Navbar />
             <MyRecipesContainer />
         </>
     )
