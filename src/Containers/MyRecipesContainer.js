@@ -18,9 +18,7 @@ export default function MyRecipesContainer () {
         fetchMyRecipes();
     }, []);
 
-    const myRecipeCard = () => {
-        return myRecipes.map(recipe => <MyRecipeItem key={recipe.id} data={recipe} />)
-    }
+
     console.log(myRecipes)
     return(
         <>

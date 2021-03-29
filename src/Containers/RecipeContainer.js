@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
-import RecipeItem from '../Components/RecipeItem'
+import RecipeList from '../Components/RecipeList'
 
 function RecipeContainer() {
+  //fetch all recipes
 const [recipes, setRecipes] = useState([]);
 const recipeUrl = 'http://localhost:3000/recipes'
 
@@ -15,14 +16,21 @@ useEffect( () => {
     fetchRecipes();
   }, []);
 
-  const recipeCard = () => {
-    return recipes.map(recipe => <RecipeItem key={recipe.id} data={recipe} />)
+
+  //set state if user chooses to see their created recipes
+  const [myRecipes, setMyRecipes] = useState(false)
+  const toggleMyRecipes = () => {
+      return myRecipes === false ? setMyRecipes(true) : setMyRecipes(false)
   }
 
-  console.log(recipes)
   return (
     <div>
-      {recipeCard()}
+
+      <button onClick={toggleMyRecipes}>
+          View your created recipes 
+      </button>&nbsp;&nbsp;&nbsp;
+
+      <RecipeList recipes={recipes} myRecipes={myRecipes} />
     </div>
   );
 };

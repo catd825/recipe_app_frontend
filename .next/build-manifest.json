@@ -24,10 +24,15 @@
       "static/chunks/webpack.js",
       "static/chunks/pages/_error.js"
     ],
-    "/recipes/[id]": [
+    "/recipes": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
-      "static/chunks/pages/recipes/[id].js"
+      "static/chunks/pages/recipes.js"
+    ],
+    "/recipes/new": [
+      "static/chunks/main.js",
+      "static/chunks/webpack.js",
+      "static/chunks/pages/recipes/new.js"
     ],
     "/saved_recipes": [
       "static/chunks/main.js",

@@ -3,23 +3,25 @@ import SavedRecipeCard from '../Components/SavedRecipeCard'
 
 export default function MySavedRecipes () {
     
-    const [savedRecipes, setSavedRecipes]  = useState([]);
-    const savedRecipeUrl = 'http://localhost:3000/favorite_recipes'
+    //fetch favorite_recipes
+  const [favorites, setFavorites] = useState([])
+  const favoritesUrl = 'http://localhost:3000/favorite_recipes'
 
-    useEffect ( () => {
-        const fetchSavedRecipes = async () => {
-            const response = await fetch(savedRecipeUrl)
-            const json = await response.json()
-            setSavedRecipes(json)
-        }
-        fetchSavedRecipes();
-    }, []);
-    
+  useEffect ( () => {
+      const fetchFavorites = async () => {
+          const response = await fetch(favoritesUrl)
+          const data = await response.json()
+          setFavorites(data)
+      }
+      fetchFavorites();
+  }, []);
+
+
     const savedRecipeCard = () => {
-        return savedRecipes.map((recipes => <SavedRecipeCard key={recipes.id} data={recipes} />))
+        return favorites.map((recipes => <SavedRecipeCard key={recipes.id} data={favorites} />))
     }
     
-    console.log(savedRecipes)
+    console.log(favorites)
     return (
         <>
             {savedRecipeCard()}

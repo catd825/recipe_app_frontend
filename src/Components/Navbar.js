@@ -1,5 +1,26 @@
 import Link from 'next/link';
+import { useState } from 'react'
 
+export default function Navbar () {
+
+    return (
+
+        <div style={{ padding: '1em', size:'40px' }}>
+            <b>
+                Welcome to the recipe app!
+                <br/>
+            <Link href="/recipes/new">
+                Add Recipe 
+            </Link> &nbsp;&nbsp;&nbsp;
+            <Link href="/">
+                Go Home 
+            </Link>  
+            </b>
+        </div>
+    )
+}
+
+/*
 export default function Navbar () {
     return (
         <div style={{ padding: '1em', size:'40px' }}>
@@ -22,3 +43,4 @@ export default function Navbar () {
         </div>
     )
 }
+*/

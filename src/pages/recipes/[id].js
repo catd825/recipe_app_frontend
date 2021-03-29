@@ -1,5 +1,4 @@
 import { useRouter } from 'next/router'
-import Navbar from '../../Components/Navbar'
 import { CURRENT_USER } from '../../current_user'
 
 export const getStaticPaths = async () => {
@@ -44,7 +43,7 @@ const ShowPage = ({recipe}) => {
             <p>{recipe.description}</p>
             <p>{recipe.ingredients}</p>
             <p>{recipe.instructions}</p>
-            <button onClick={() => router.push('/')}>Back to Main</button>
+            <button onClick={() => router.push('/recipes')}>Back to Main</button>
             
             {/* Edit / Delete buttons only appear if current user is the creator */}            
             {current_user === recipe.recipe_creator_id ? 
