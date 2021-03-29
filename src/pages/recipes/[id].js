@@ -38,14 +38,15 @@ const ShowPage = ({recipe}) => {
     console.log(recipe)
     return (
         <> 
-        <Navbar />
         <div>
             <p>{recipe.title}</p>
             <p><img src={recipe.img_url} style={{height:'250px'}} alt='' /></p>
             <p>{recipe.description}</p>
             <p>{recipe.ingredients}</p>
             <p>{recipe.instructions}</p>
-            <button onClick={() => router.push('/recipes')}>Back to Main</button>
+            <button onClick={() => router.push('/')}>Back to Main</button>
+            
+            {/* Edit / Delete buttons only appear if current user is the creator */}            
             {current_user === recipe.recipe_creator_id ? 
                 <>
                     <button onClick={() => console.log("edit!")}>Edit</button>

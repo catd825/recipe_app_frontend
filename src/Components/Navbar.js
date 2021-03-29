@@ -6,16 +6,16 @@ export default function Navbar () {
             <b>
                 Welcome to the recipe app!
                 <br/>
-            <Link href="/create_recipe" passHref={true}>
+            <Link href="/create_recipe">
                 Add Recipe 
             </Link> &nbsp;&nbsp;&nbsp;
-            <Link href="/saved_recipes" passHref={true}>
+            <Link href="/saved_recipes">
                 View your saved recipes 
             </Link>&nbsp;&nbsp;&nbsp;
-            <Link href="/my_recipes" passHref={true}>
+            <Link href="/my_recipes">
                 View your created recipes 
             </Link>&nbsp;&nbsp;&nbsp;
-            <Link href="/recipes" passHref={true}>
+            <Link href="/">
                 Go Home 
             </Link>  
             </b>

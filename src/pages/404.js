@@ -6,8 +6,7 @@ const NotFound = () => {
 
     useEffect( () => {
         setTimeout(() => {
-            // router.go(-1);
-            router.push('/recipes')
+            router.push('/')
         },100)
     }, [])
 

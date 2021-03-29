@@ -8,9 +8,9 @@ const recipeUrl = 'http://localhost:3000/recipes'
 useEffect( () => {
     const fetchRecipes = async () => {
         const response = await fetch(recipeUrl)
-        const json = await response.json();
+        const data = await response.json();
 
-        setRecipes(json);
+        setRecipes(data);
     };
     fetchRecipes();
   }, []);
