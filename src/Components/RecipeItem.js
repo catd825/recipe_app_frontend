@@ -1,8 +1,8 @@
 import Link from 'next/link';
 
-export default function RecipeItem ({ recipes, favorites, selection }) {
+export default function RecipeItem ({ recipes }) {
 
-    console.log("data", recipes, "favorites", favorites, "selection", selection)
+    // console.log("recipes", recipes)
     return(
         <> 
             <div> 

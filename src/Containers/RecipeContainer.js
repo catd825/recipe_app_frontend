@@ -38,17 +38,15 @@ useEffect( () => {
 
   const changeHandler = (e) => {
     setRecipeSelection({ 
-      selection: e.target.value
+      state: e.target.value
     })
     console.log(e.target.value)
   }
 
-//  debugger
-  // console.log('favorites', favorites)
   return (
     <div>
       <RecipeFilter changeHandler={changeHandler} />
-      <RecipeList selection={recipeSelection} favorites={favorites} recipes={recipes} />
+      <RecipeList currentSelection={recipeSelection} favorites={favorites} recipes={recipes} />
     </div>
   );
 };
