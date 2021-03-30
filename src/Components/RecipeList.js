@@ -2,7 +2,6 @@ import RecipeItem from './RecipeItem'
 import { CURRENT_USER } from '../current_user'
 
 export default function RecipeList ({ recipes, favorites, selection }) {
-    const saved_by = favorites.recipe_liker_id
     const current_user = CURRENT_USER
 
     const myCreatedRecipes = () => {
@@ -13,23 +12,28 @@ export default function RecipeList ({ recipes, favorites, selection }) {
         return favorites.filter(favorite => favorite.recipe_liker_id === current_user)
     }
 
+    const mapFavoriteRecipeIds = () => {
+        return myFavoriteRecipes().map(favorite => favorite.recipe_id)
+    }
 
     const recipeCard = () => {
         if(selection.selection === 'created') {
             return myCreatedRecipes().map(recipe => 
-                <RecipeItem key={recipe.id} favorites={favorites} recipes={recipe} />)
+                <RecipeItem selection={selection} key={recipe.id} recipes={recipe} />)
         } else if (selection.selection === 'all' || selection.selection === undefined) {
             return recipes.map(recipe => 
-                <RecipeItem key={recipe.id} favorites={favorites} recipes={recipe} />)
+                <RecipeItem selection={selection} key={recipe.id} recipes={recipe} />)
         } else if (selection.selection === 'saved') {
-            return myFavoriteRecipes().map(favorite => 
-                //pick up here!
-                <RecipeItem key={favorite.id} favorites={favorite} recipes={favorite} />)
+            return recipes.map(recipe => {
+                if(mapFavoriteRecipeIds().includes(recipe.id)){
+                    return <RecipeItem selection={selection} key={recipe.id} recipes={recipe} />
+                }
+            })
         }
     }
 
     // debugger
-    console.log(myFavoriteRecipes())
+    // console.log(mapFavoriteRecipeIds())
 
     return (
         <>

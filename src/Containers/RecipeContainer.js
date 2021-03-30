@@ -44,7 +44,7 @@ useEffect( () => {
   }
 
 //  debugger
-  console.log('favorites', favorites)
+  // console.log('favorites', favorites)
   return (
     <div>
       <RecipeFilter changeHandler={changeHandler} />

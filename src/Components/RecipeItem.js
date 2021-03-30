@@ -1,16 +1,14 @@
 import Link from 'next/link';
-import { CURRENT_USER } from '../current_user'
 
-export default function RecipeItem ({ recipes, favorites }) {
+export default function RecipeItem ({ recipes, favorites, selection }) {
 
-    console.log("data", recipes, "favorites", favorites)
+    console.log("data", recipes, "favorites", favorites, "selection", selection)
     return(
-        <>
-
-        <div> 
-            <img src={recipes.img_url} style={{height:'250px'}} alt='' />
-            <p><Link key={recipes.id} href={'/recipes/' + recipes.id}>{recipes.title}</Link></p>
-        </div>
+        <> 
+            <div> 
+                <img src={recipes.img_url} style={{height:'250px'}} alt='' />
+                <p><Link key={recipes.id} href={'/recipes/' + recipes.id}>{recipes.title}</Link></p>
+            </div>
         </>
     )
 }
