@@ -2,9 +2,8 @@ import Link from 'next/link';
 import { CURRENT_USER } from '../current_user'
 
 export default function RecipeItem ({ recipes, favorites }) {
-    const current_user = CURRENT_USER
 
-    // console.log("data", recipes, "favorites", favorites, "current user", current_user)
+    console.log("data", recipes, "favorites", favorites)
     return(
         <>
 

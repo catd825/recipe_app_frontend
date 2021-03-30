@@ -1,8 +1,13 @@
 import { useState, useEffect } from 'react'
 import RecipeList from '../Components/RecipeList'
+import RecipeFilter from '../Components/RecipeFilter'
+import { CURRENT_USER } from '../current_user'
 
 function RecipeContainer() {
-  //fetch all recipes
+
+const current_user = CURRENT_USER
+
+//fetch all recipes
 const [recipes, setRecipes] = useState([]);
 const recipeUrl = 'http://localhost:3000/recipes'
 
@@ -16,21 +21,34 @@ useEffect( () => {
     fetchRecipes();
   }, []);
 
+  const [favorites, setFavorites] = useState([]);
+  const favoriteRecipeUrl = 'http://localhost:3000/favorite_recipes'
 
-  //set state if user chooses to see their created recipes
-  const [myRecipes, setMyRecipes] = useState(false)
-  const toggleMyRecipes = () => {
-      return myRecipes === false ? setMyRecipes(true) : setMyRecipes(false)
+useEffect( () => {
+    const fetchFavorites = async () => {
+        const response = await fetch(favoriteRecipeUrl)
+        const data = await response.json();
+
+        setFavorites(data);
+    };
+    fetchFavorites();
+  }, []);
+
+  const [recipeSelection, setRecipeSelection] = useState('all');
+
+  const changeHandler = (e) => {
+    setRecipeSelection({ 
+      selection: e.target.value
+    })
+    console.log(e.target.value)
   }
 
+//  debugger
+  console.log('favorites', favorites)
   return (
     <div>
-
-      <button onClick={toggleMyRecipes}>
-          View your created recipes 
-      </button>&nbsp;&nbsp;&nbsp;
-
-      <RecipeList recipes={recipes} myRecipes={myRecipes} />
+      <RecipeFilter changeHandler={changeHandler} />
+      <RecipeList selection={recipeSelection} favorites={favorites} recipes={recipes} />
     </div>
   );
 };
