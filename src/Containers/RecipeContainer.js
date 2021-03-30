@@ -1,7 +1,13 @@
 import { useState, useEffect } from 'react'
-import RecipeItem from '../Components/RecipeItem'
+import RecipeList from '../Components/RecipeList'
+import RecipeFilter from '../Components/RecipeFilter'
+import { CURRENT_USER } from '../current_user'
 
 function RecipeContainer() {
+
+const current_user = CURRENT_USER
+
+//fetch all recipes
 const [recipes, setRecipes] = useState([]);
 const recipeUrl = 'http://localhost:3000/recipes'
 
@@ -15,14 +21,34 @@ useEffect( () => {
     fetchRecipes();
   }, []);
 
-  const recipeCard = () => {
-    return recipes.map(recipe => <RecipeItem key={recipe.id} data={recipe} />)
+  const [favorites, setFavorites] = useState([]);
+  const favoriteRecipeUrl = 'http://localhost:3000/favorite_recipes'
+
+useEffect( () => {
+    const fetchFavorites = async () => {
+        const response = await fetch(favoriteRecipeUrl)
+        const data = await response.json();
+
+        setFavorites(data);
+    };
+    fetchFavorites();
+  }, []);
+
+  const [recipeSelection, setRecipeSelection] = useState('all');
+
+  const changeHandler = (e) => {
+    setRecipeSelection({ 
+      selection: e.target.value
+    })
+    console.log(e.target.value)
   }
 
-  console.log(recipes)
+//  debugger
+  console.log('favorites', favorites)
   return (
     <div>
-      {recipeCard()}
+      <RecipeFilter changeHandler={changeHandler} />
+      <RecipeList selection={recipeSelection} favorites={favorites} recipes={recipes} />
     </div>
   );
 };

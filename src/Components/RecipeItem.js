@@ -1,24 +1,38 @@
 import Link from 'next/link';
-// import Image from 'next/image';
 import { CURRENT_USER } from '../current_user'
 
-export default function RecipeItem ({data}) {
-    const current_user = CURRENT_USER
+export default function RecipeItem ({ recipes, favorites }) {
+
+    console.log("data", recipes, "favorites", favorites)
     return(
+        <>
+
         <div> 
-            <img src={data.img_url} style={{height:'250px'}} alt='' />
-            <p><Link key={data.id} href={'/recipes/' + data.id}>{data.title}</Link></p>
+            <img src={recipes.img_url} style={{height:'250px'}} alt='' />
+            <p><Link key={recipes.id} href={'/recipes/' + recipes.id}>{recipes.title}</Link></p>
         </div>
+        </>
     )
 }
+
+
+
+
+
+
+
+
+
+
+
 
 /*
 export default function RecipeItem (props) {
     console.log(props)
     return(
         <div> 
-            <img src={data.img_url} style={{height:'250px'}} alt='' />
-            <p>{data.title}</p>
+            <img src={recipes.img_url} style={{height:'250px'}} alt='' />
+            <p>{recipes.title}</p>
         </div>
     )
 }

@@ -1,6 +1,6 @@
 // import '../Home.css';
 import Head from 'next/head'
-import RecipeContainer from '../Containers/RecipeContainer'
+import Link from 'next/link'
 
 function Home() {
   return (
@@ -10,7 +10,7 @@ function Home() {
       <meta name="keywords" content="recipes" />
     </Head>
     <div>
-        <RecipeContainer />
+        <Link href="/recipes">Begin</Link>
     </div>
     </>
   );
