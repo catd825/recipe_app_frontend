@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
+import { CURRENT_USER } from '../current_user'
 import RecipeList from '../Components/RecipeList'
 import RecipeFilter from '../Components/RecipeFilter'
-import { CURRENT_USER } from '../current_user'
+
 
 function RecipeContainer() {
 

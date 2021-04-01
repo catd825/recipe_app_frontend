@@ -36,26 +36,11 @@ export default function RecipeList ({ recipes, favorites, currentSelection }) {
             })
         }
     }
-
-    // debugger
-    // console.log(mapFavoriteRecipeIds())
+    console.log(mapFavoriteRecipeIds())
 
     return (
-        <>
+        <div className="cards">
             {recipeCard()}
-        </>
+        </div>
     )
 }
-
-    /*
-    //parse recipe cards
-    const recipeCard = () => {
-        // if (myRecipes === true) {
-        //     return myCreatedRecipes().map(recipe => 
-        //         <RecipeItem key={recipe.id} favorites={favorites} recipes={recipe} />)
-        // } else if (myRecipes !== true) {
-            return recipes.map(recipe => 
-                <RecipeItem key={recipe.id} favorites={favorites} recipes={recipe} />)
-        // }
-    }
-    */  

@@ -1,7 +1,11 @@
 import { useState } from 'react'
 import { CURRENT_USER } from '../current_user'
+import { useRouter } from 'next/router'
 
 export default function Form () {
+
+    const router = useRouter()
+
     const formObj = {
         recipe_creator_id: CURRENT_USER, //only for testing before auth fully implemented
         title: '',
@@ -12,13 +16,12 @@ export default function Form () {
     }
 
     const [formData, setFormData] = useState(formObj)
-    
+
     const changeHandler = (e) => {
         setFormData({
             ...formData, 
             [e.target.name]: e.target.value
         })
-        // console.log(e.target.value)
     }
 
     const submitHelper = (e) => {
@@ -38,8 +41,9 @@ export default function Form () {
 
             fetch('http://localhost:3000/recipes', configObj)
             .then(res => res.json())
-            .then(console.log)
+            .then(() => router.push('/recipes'))
     }
+
     
     return (
         <div>
