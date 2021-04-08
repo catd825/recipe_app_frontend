@@ -8,7 +8,7 @@ export default function RecipeItem ({ recipes }) {
             <div className="card"> 
                 <img src={recipes.img_url} style={{height:'250px'}} alt='' />
                 <p>
-                    <Link key={recipes.id} href={'/recipes/' + recipes.id}>{recipes.title}</Link>
+                    <Link hello="world" key={recipes.id} href={'/recipes/' + recipes.id}>{recipes.title}</Link>
                 </p>
             </div>
         </>

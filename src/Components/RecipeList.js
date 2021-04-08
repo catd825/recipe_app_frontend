@@ -36,7 +36,7 @@ export default function RecipeList ({ recipes, favorites, currentSelection }) {
             })
         }
     }
-    console.log(mapFavoriteRecipeIds())
+    // console.log(mapFavoriteRecipeIds())
 
     return (
         <div className="cards">
