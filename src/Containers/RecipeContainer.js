@@ -8,6 +8,7 @@ function RecipeContainer() {
 
 const current_user = CURRENT_USER
 
+
 //fetch all recipes
 const [recipes, setRecipes] = useState([]);
 const recipeUrl = 'http://localhost:3000/recipes'
@@ -53,3 +54,16 @@ useEffect( () => {
 };
 
 export default RecipeContainer;
+
+/*
+export const getStaticProps = async () => {
+  const res = await fetch ('http://localhost:3000/recipes')
+  const recipes = await res.json();
+
+  return {
+    props: {
+      recipes
+    }
+  }
+}
+*/

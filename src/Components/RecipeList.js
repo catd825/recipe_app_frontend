@@ -30,9 +30,8 @@ export default function RecipeList ({ recipes, favorites, currentSelection }) {
                 <RecipeItem key={recipe.id} recipes={recipe} />)
         } else if (selection === 'saved') {
             return recipes.map(recipe => {
-                if(mapFavoriteRecipeIds().includes(recipe.id)){
+                if(mapFavoriteRecipeIds().includes(recipe.id))
                     return <RecipeItem key={recipe.id} recipes={recipe} />
-                }
             })
         }
     }
