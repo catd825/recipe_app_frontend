@@ -1,46 +1,28 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useRouter } from 'next/router'
-import { CURRENT_USER } from '../current_user'
+import { CURRENT_USER } from '../CURRENT_USER'
 
 export default function EditForm ({ data, setEditState }) {
 
-    
-    const current_user = CURRENT_USER
-    // const router = useRouter()
-/*
-    const [recipe, setRecipes] = useState({});
-    const recipeUrl = `http://localhost:3000/recipes/${data.id}`  
-    
-    useEffect( () => {
-        const fetchRecipes = async () => {
-            const response = await fetch(recipeUrl)
-            const data = await response.json();
-            setRecipes(data);
-        };
-        fetchRecipes();
-      }, []);
-    //   console.log(recipe)
-    
-    */
+    //Pre-populate input fields with previous data
     const formObj = {
-        recipe_creator_id: current_user, //only for testing before auth fully implemented
+        recipe_creator_id: CURRENT_USER, //only for testing before auth fully implemented
         title: data.title,
         ingredients: data.ingredients,
         instructions: data.instructions,
         img_url: data.img_url,
         description: data.description
     }
-    
-    // debugger
 
+    //Set initial formData state to object to edit
     const [formData, setFormData] = useState(formObj)
-
+    //Set state to capture only changes made
     const changeHandler = (e) => {
         setFormData({
             ...formData, 
             [e.target.name]: e.target.value
         })
-        console.log(e.target.value)
+        // console.log(e.target.value)
     }
 
     const submitHelper = (e) => {
@@ -48,6 +30,7 @@ export default function EditForm ({ data, setEditState }) {
         submitHandler()
     }
 
+    //Define router and helper function to refresh upon edit submission
     const router = useRouter();
     const refreshData = () => {
         router.replace(router.asPath);
@@ -64,16 +47,14 @@ export default function EditForm ({ data, setEditState }) {
         }
 
         const res = await fetch(`http://localhost:3000/recipes/${data.id}`, configObj)
-        const recipe = await res.json();
-
+        // const recipe = await res.json();
+        //Toggle edit page to disappear
         setEditState(null)
         
+        //Invoke refresh helper
         if (res.status < 300) {
             refreshData();
         }
-              
-            // console.log(recipe)
-            // editHelper(recipe)
     }
     
     return (
