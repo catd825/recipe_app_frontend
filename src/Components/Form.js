@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import { CURRENT_USER } from '../current_user'
 import { useRouter } from 'next/router'
+import { useRecipeContext } from '../RecipeContext/state'
 
 export default function Form () {
 
+    const {recipes, setRecipes} = useRecipeContext();
     const current_user = CURRENT_USER
-
     const router = useRouter()
 
     const formObj = {
@@ -31,7 +32,7 @@ export default function Form () {
         submitHandler()
     }
 
-    const submitHandler = () => {
+    const submitHandler = async () => {
         const configObj = {
             method: 'POST',
             headers: {
@@ -41,11 +42,13 @@ export default function Form () {
             body: JSON.stringify(formData)
         }
 
-            fetch('http://localhost:3000/recipes', configObj)
-            .then(res => res.json())
-            .then(() => router.push('/recipes'))
-    }
+            const res = await fetch('http://localhost:3000/recipes', configObj)
+            const data = await res.json()
 
+            const newRecipeArray = [...recipes, data]
+            setRecipes(newRecipeArray)
+            router.push('/recipes');
+    }
     
     return (
         <div>

@@ -3,6 +3,7 @@ import { CURRENT_USER } from '../../current_user'
 import { useState } from 'react'
 import EditForm from '../../Components/EditForm'
 import SaveButton from '../../Components/SaveButton'
+import { useRecipeContext } from '../../RecipeContext/state'
 
 export const getStaticPaths = async () => {
     const response = await fetch('http://localhost:3000/recipes')
@@ -44,6 +45,30 @@ const ShowPage = ({ recipe }) => {
         setCurrentRecipe(updatedRecipeObj)
     }
 
+    const {recipes, setRecipes} = useRecipeContext();
+
+    const deleteHandler = async (recipeId) => {
+        const configObj = {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+            },
+        }
+        
+        await fetch('http://localhost:3000/recipes/' + recipeId, configObj)
+        
+        // console.log(data)
+
+        let revisedRecipeArray = recipes.filter(recipe => recipe.id !== recipeId)
+        console.log(revisedRecipeArray)
+        setRecipes(revisedRecipeArray)
+        router.push('http://localhost:3001/recipes')
+        
+        
+        // console.log(recipeId)
+    }
+
     return (
         <> 
         <div className="show-card">
@@ -58,12 +83,12 @@ const ShowPage = ({ recipe }) => {
             {current_user === recipe.recipe_creator_id ? 
                 <>
                     <button onClick={() => setEditState(!editState)}>Edit</button>
-                    <button onClick={() => console.log("delete!")}>Delete</button> 
+                    <button onClick={() => deleteHandler(currentRecipe.id)}>Delete</button> 
                 </>
                 : 
                 <>
-                    <SaveButton recipe={recipe} key={recipe.id} />
-                    {/* <button onClick={() => console.log("save!")}>Save</button>  */}
+                    {/* <SaveButton recipe={recipe} key={recipe.id} /> */}
+                    <button onClick={() => console.log("save!")}>Save</button> 
                 </>
             }
             {editState === true ? <EditForm setEditState={setEditState} key={recipe.id} recipe={recipe} editHelper={editHelper} /> : <></>}
