@@ -13,30 +13,46 @@ export const getStaticPaths = async () => {
         }
     })
     return {
-        paths, // short for paths: paths
-        fallback: false // we can use this to redirect to 404 page when it exists
+        paths,
+        fallback: false // redirects to 404 page
     }
 }
 
 export const getStaticProps = async (context) => {
     const id = context.params.id; 
     const response = await fetch('http://localhost:3000/recipes/' + id)
-    const data = await response.json();
+    const recipe = await response.json();
 
     return {
         props: { 
-            recipe: data
+            recipe,
+            id
         }
     }
 }
 
-const ShowPage = ({ recipe }) => {
+const ShowPage = ({ recipe, id }) => {
     const router = useRouter()
     const current_user = CURRENT_USER
 
+    //set state variable for recipe show page, with a default state of the current recipe object
+    // const [editRecipe, setEditRecipe] = useState(recipe)
+
+    // console.log(recipe)
+
+    //to edit, if id matches, make a copy of original object and reset state to only modify changed values
+    // const editHelper = (editedRecipeObj) => {
+    //     console.log(editedRecipeObj)
+    //     setEditRecipe(
+    //         {...editRecipe, 
+    //         editedRecipeObj}
+    //     )
+    //     // setRecipeShowPage({...recipeShowPage}, editedRecipeObj)
+    // }
+
     const [editState, setEditState] = useState(null)
 
-    console.log(editState)
+    // console.log(editState)
     return (
         <> 
         <div className="show-card">
@@ -59,7 +75,7 @@ const ShowPage = ({ recipe }) => {
                     <button onClick={() => console.log("save!")}>Save</button> 
                 </>
             }
-            {editState === true ? <EditForm key={recipe.id} data={recipe}/> : <></>}
+            {editState === true ? <EditForm editHelper={editHelper} setEditState={setEditState} key={recipe.id} data={recipe}/> : <></>}
         </div>
         </>
     )

@@ -2,10 +2,11 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { CURRENT_USER } from '../current_user'
 
-export default function EditForm ({data}) {
+export default function EditForm ({ data, setEditState }) {
 
+    
     const current_user = CURRENT_USER
-    const router = useRouter()
+    // const router = useRouter()
 /*
     const [recipe, setRecipes] = useState({});
     const recipeUrl = `http://localhost:3000/recipes/${data.id}`  
@@ -47,7 +48,12 @@ export default function EditForm ({data}) {
         submitHandler()
     }
 
-    const submitHandler = () => {
+    const router = useRouter();
+    const refreshData = () => {
+        router.replace(router.asPath);
+    }
+
+    const submitHandler = async () => {
         const configObj = {
             method: 'PATCH',
             headers: {
@@ -57,9 +63,17 @@ export default function EditForm ({data}) {
             body: JSON.stringify(formData)
         }
 
-            fetch(`http://localhost:3000/recipes/${data.id}`, configObj)
-            .then(res => res.json())
-            .then(console.log)
+        const res = await fetch(`http://localhost:3000/recipes/${data.id}`, configObj)
+        const recipe = await res.json();
+
+        setEditState(null)
+        
+        if (res.status < 300) {
+            refreshData();
+        }
+              
+            // console.log(recipe)
+            // editHelper(recipe)
     }
     
     return (
