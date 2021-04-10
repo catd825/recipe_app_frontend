@@ -2,12 +2,14 @@ import { useState, useEffect } from 'react'
 // import { CURRENT_USER } from '../current_user'
 import RecipeList from '../Components/RecipeList'
 import RecipeFilter from '../Components/RecipeFilter'
+import { useRecipeContext } from '../RecipeContext/state'
 
 
 function RecipeContainer() {
 
-
+const {recipes, setRecipes} = useRecipeContext();
 //fetch all recipes
+/*
 const [recipes, setRecipes] = useState([]);
 const recipeUrl = 'http://localhost:3000/recipes'
 
@@ -20,6 +22,7 @@ useEffect( () => {
     };
     fetchRecipes();
   }, []);
+  */
 
   const [favorites, setFavorites] = useState([]);
   const favoriteRecipeUrl = 'http://localhost:3000/favorite_recipes'
@@ -40,9 +43,12 @@ useEffect( () => {
     setRecipeSelection({ 
       state: e.target.value
     })
-    console.log(e.target.value)
+    // console.log(e.target.value)
   }
 
+
+
+  console.log(recipes)
   return (
     <div>
       <RecipeFilter changeHandler={changeHandler} />
@@ -52,16 +58,3 @@ useEffect( () => {
 };
 
 export default RecipeContainer;
-
-/*
-export const getStaticProps = async () => {
-  const res = await fetch ('http://localhost:3000/recipes')
-  const recipes = await res.json();
-
-  return {
-    props: {
-      recipes
-    }
-  }
-}
-*/

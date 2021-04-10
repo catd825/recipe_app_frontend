@@ -1,17 +1,19 @@
 import { useState } from 'react'
 import { useRouter } from 'next/router'
-import { CURRENT_USER } from '../CURRENT_USER'
+import { CURRENT_USER } from '../current_user'
 
-export default function EditForm ({ data, setEditState }) {
+export default function EditForm ({ recipe, setEditState, editHelper }) {
 
+    const current_user = CURRENT_USER
     //Pre-populate input fields with previous data
     const formObj = {
-        recipe_creator_id: CURRENT_USER, //only for testing before auth fully implemented
-        title: data.title,
-        ingredients: data.ingredients,
-        instructions: data.instructions,
-        img_url: data.img_url,
-        description: data.description
+        id: recipe.id,
+        recipe_creator_id: current_user, //only for testing before auth fully implemented
+        title: recipe.title,
+        ingredients: recipe.ingredients,
+        instructions: recipe.instructions,
+        img_url: recipe.img_url,
+        description: recipe.description
     }
 
     //Set initial formData state to object to edit
@@ -30,11 +32,13 @@ export default function EditForm ({ data, setEditState }) {
         submitHandler()
     }
 
+    /*
     //Define router and helper function to refresh upon edit submission
     const router = useRouter();
     const refreshData = () => {
         router.replace(router.asPath);
     }
+    */
 
     const submitHandler = async () => {
         const configObj = {
@@ -46,15 +50,18 @@ export default function EditForm ({ data, setEditState }) {
             body: JSON.stringify(formData)
         }
 
-        const res = await fetch(`http://localhost:3000/recipes/${data.id}`, configObj)
-        // const recipe = await res.json();
+        const res = await fetch(`http://localhost:3000/recipes/${recipe.id}`, configObj)
+        const data = await res.json();
         //Toggle edit page to disappear
         setEditState(null)
-        
+        editHelper(formData)
+        /*
         //Invoke refresh helper
         if (res.status < 300) {
             refreshData();
         }
+        */
+
     }
     
     return (

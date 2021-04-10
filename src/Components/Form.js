@@ -4,10 +4,12 @@ import { useRouter } from 'next/router'
 
 export default function Form () {
 
+    const current_user = CURRENT_USER
+
     const router = useRouter()
 
     const formObj = {
-        recipe_creator_id: CURRENT_USER, //only for testing before auth fully implemented
+        recipe_creator_id: current_user, //only for testing before auth fully implemented
         title: '',
         ingredients: '',
         instructions: '',
