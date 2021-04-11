@@ -2,7 +2,10 @@ import { useRouter } from 'next/router'
 import { CURRENT_USER } from '../../current_user'
 import { useState } from 'react'
 import EditForm from '../../Components/EditForm'
+import AddToFavorites from '../../Components/AddToFavorites'
+import RemoveFromFavorites from '../../Components/RemoveFromFavorites'
 import { useRecipeContext } from '../../RecipeContext/state'
+
 
 export const getStaticPaths = async () => {
     const response = await fetch('http://localhost:3000/recipes')
@@ -57,12 +60,12 @@ const ShowPage = ({ recipe }) => {
         setRecipes(revisedRecipeArray)
         router.push('http://localhost:3001/recipes')
     }
-
+    
     const recipeSavedByUser = () => {
         let arr = favorites.filter(favorite => favorite.recipe_liker_id === current_user && favorite.recipe_id === recipe.id)
-        return arr.length === 1 ? 'Remove from Favorites' : 'Add to Favorites'
+        return arr.length === 1 ? true : false
     }
-
+    console.log(recipeSavedByUser())
     return (
         <> 
         <div className="show-card">
@@ -74,17 +77,24 @@ const ShowPage = ({ recipe }) => {
             <button onClick={() => router.push('http://localhost:3001/recipes/')}>Back to Main</button>
             
             {/* Edit / Delete buttons only appear if current user is the creator */}            
-            {current_user === recipe.recipe_creator_id ? 
+
+            {current_user === recipe.recipe_creator_id &&
                 <>
                     <button onClick={() => setEditState(!editState)}>Edit</button>
                     <button onClick={() => deleteHandler(currentRecipe.id)}>Delete</button> 
                 </>
-                : 
+            }
+
+            {current_user !== recipe.recipe_creator_id && recipeSavedByUser() ?
                 <>
-                    {/* <SaveButton recipe={recipe} key={recipe.id} /> */}
-                    <button onClick={() => console.log("save!")}>{recipeSavedByUser()}</button> 
+                    <RemoveFromFavorites recipe={recipe}/>
+                </>
+                :
+                <>
+                    <AddToFavorites recipe={recipe}/>
                 </>
             }
+
             {editState === true ? <EditForm setEditState={setEditState} key={recipe.id} recipe={recipe} editHelper={editHelper} /> : <></>}
         </div>
         </>

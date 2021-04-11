@@ -22,7 +22,6 @@ export const RecipeProvider = ({ children }) => {
         const fetchFavorites = async () => {
             const response = await fetch(favoriteRecipeUrl)
             const data = await response.json();
-            console.log(data)
             setFavorites(data);
         };
         fetchFavorites();
