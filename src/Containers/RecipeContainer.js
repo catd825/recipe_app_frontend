@@ -7,20 +7,7 @@ import { useRecipeContext } from '../RecipeContext/state'
 
 function RecipeContainer() {
 
-const {recipes, setRecipes} = useRecipeContext();
-
-  const [favorites, setFavorites] = useState([]);
-  const favoriteRecipeUrl = 'http://localhost:3000/favorite_recipes'
-
-useEffect( () => {
-    const fetchFavorites = async () => {
-        const response = await fetch(favoriteRecipeUrl)
-        const data = await response.json();
-
-        setFavorites(data);
-    };
-    fetchFavorites();
-  }, []);
+  const {recipes, setRecipes, favorites, setFavorites} = useRecipeContext();
 
   const [recipeSelection, setRecipeSelection] = useState('all');
 
@@ -28,10 +15,7 @@ useEffect( () => {
     setRecipeSelection({ 
       state: e.target.value
     })
-    // console.log(e.target.value)
   }
-
-
 
   console.log(recipes)
   return (

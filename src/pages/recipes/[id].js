@@ -57,16 +57,11 @@ const ShowPage = ({ recipe }) => {
         setRecipes(revisedRecipeArray)
         router.push('http://localhost:3001/recipes')
     }
-  
-    /*
-        const isUserFavorite = () => {
-            let arr = favorites.filter(favorite => favorite.recipe_liker_id === current_user && favorite.recipe_id === recipe.id)
-            return arr.length
-            // console.log('arr', arr)
-        }
-    */
 
-        const [savedRecipe, setSavedRecipe] = useState()
+    const recipeSavedByUser = () => {
+        let arr = favorites.filter(favorite => favorite.recipe_liker_id === current_user && favorite.recipe_id === recipe.id)
+        return arr.length === 1 ? 'Remove from Favorites' : 'Add to Favorites'
+    }
 
     return (
         <> 
@@ -87,7 +82,7 @@ const ShowPage = ({ recipe }) => {
                 : 
                 <>
                     {/* <SaveButton recipe={recipe} key={recipe.id} /> */}
-                    <button onClick={() => console.log("save!")}>Save</button> 
+                    <button onClick={() => console.log("save!")}>{recipeSavedByUser()}</button> 
                 </>
             }
             {editState === true ? <EditForm setEditState={setEditState} key={recipe.id} recipe={recipe} editHelper={editHelper} /> : <></>}
