@@ -4,8 +4,6 @@ const RecipeContext = createContext(); //creates a store
 
 export const RecipeProvider = ({ children }) => {
     const [recipes, setRecipes] = useState([]);
-    const [favorites, setFavorites] = useState([]);  
-
     const recipeUrl = 'http://localhost:3000/recipes'
 
     useEffect( () => {
@@ -16,6 +14,19 @@ export const RecipeProvider = ({ children }) => {
             setRecipes(data);
         };
         fetchRecipes();
+      }, []);
+
+      const [favorites, setFavorites] = useState([]);
+      const favoriteRecipeUrl = 'http://localhost:3000/favorite_recipes'
+    
+    useEffect( () => {
+        const fetchFavorites = async () => {
+            const response = await fetch(favoriteRecipeUrl)
+            const data = await response.json();
+    
+            setFavorites(data);
+        };
+        fetchFavorites();
       }, []);
 
     return (

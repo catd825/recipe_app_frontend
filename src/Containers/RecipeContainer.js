@@ -8,21 +8,6 @@ import { useRecipeContext } from '../RecipeContext/state'
 function RecipeContainer() {
 
 const {recipes, setRecipes} = useRecipeContext();
-//fetch all recipes
-/*
-const [recipes, setRecipes] = useState([]);
-const recipeUrl = 'http://localhost:3000/recipes'
-
-useEffect( () => {
-    const fetchRecipes = async () => {
-        const response = await fetch(recipeUrl)
-        const data = await response.json();
-
-        setRecipes(data);
-    };
-    fetchRecipes();
-  }, []);
-  */
 
   const [favorites, setFavorites] = useState([]);
   const favoriteRecipeUrl = 'http://localhost:3000/favorite_recipes'
