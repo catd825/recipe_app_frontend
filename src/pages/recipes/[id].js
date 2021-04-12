@@ -85,11 +85,13 @@ const ShowPage = ({ recipe }) => {
                 </>
             }
 
-            {current_user !== recipe.recipe_creator_id && recipeSavedByUser() ?
+            {current_user !== recipe.recipe_creator_id && recipeSavedByUser() &&
                 <>
                     <RemoveFromFavorites recipe={recipe}/>
                 </>
-                :
+            }
+            
+            {current_user !== recipe.recipe_creator_id && !recipeSavedByUser() &&
                 <>
                     <AddToFavorites recipe={recipe}/>
                 </>
