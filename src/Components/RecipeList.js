@@ -1,4 +1,5 @@
 import RecipeItem from './RecipeItem'
+import SearchBar from './SearchBar'
 import { CURRENT_USER } from '../current_user'
 
 export default function RecipeList ({ recipes, favorites, currentSelection }) {
@@ -41,8 +42,11 @@ export default function RecipeList ({ recipes, favorites, currentSelection }) {
     // console.log(mapFavoriteRecipeIds())
 
     return (
-        <div className="cards">
-            {recipeCard()}
+        <div style={{textAlign: 'center'}}>
+            <SearchBar />
+            <div className="cards">
+                {recipeCard()}
+            </div>
         </div>
     )
 }
