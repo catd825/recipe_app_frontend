@@ -61,14 +61,23 @@ const ShowPage = ({ recipe }) => {
         router.push('http://localhost:3001/recipes')
     }
     
+    //checks to see if this recipe is saved by the user
     const recipeSavedByUser = () => {
         let arr = favorites.filter(favorite => favorite.recipe_liker_id === current_user && favorite.recipe_id === recipe.id)
         return arr.length === 1 ? true : false
     }
-    console.log(recipeSavedByUser())
+
+    //grabs ID of favorite
+    const userFavorite = () => {
+        let arr = favorites.map(favorite => favorite.recipe_liker_id === current_user && favorite.recipe_id === recipe.id ? favorite.id : null)
+        return arr.length > 0 && parseInt(arr.filter(favorite => favorite !== null))
+    }
+    console.log(favorites)
+    console.log(userFavorite())
     return (
         <> 
         <div className="show-card">
+            <p>Current User: {current_user} Created By:{currentRecipe.recipe_creator_id}</p>
             <h1>{currentRecipe.title}</h1>
             <p><img src={currentRecipe.img_url} style={{height:'250px'}} alt='' /></p>
             <p>{currentRecipe.description}</p>
@@ -77,7 +86,6 @@ const ShowPage = ({ recipe }) => {
             <button onClick={() => router.push('http://localhost:3001/recipes/')}>Back to Main</button>
             
             {/* Edit / Delete buttons only appear if current user is the creator */}            
-
             {current_user === recipe.recipe_creator_id &&
                 <>
                     <button onClick={() => setEditState(!editState)}>Edit</button>
@@ -85,18 +93,21 @@ const ShowPage = ({ recipe }) => {
                 </>
             }
 
+            {/* If not current user and current recipe is saved by user, give option to unsave */}
             {current_user !== recipe.recipe_creator_id && recipeSavedByUser() &&
                 <>
-                    <RemoveFromFavorites recipe={recipe}/>
+                    <RemoveFromFavorites userFavorite={userFavorite()} recipe={recipe}/>
                 </>
             }
             
+            {/* If not current user and current recipe is saved by user, give option to save */}
             {current_user !== recipe.recipe_creator_id && !recipeSavedByUser() &&
                 <>
                     <AddToFavorites recipe={recipe}/>
                 </>
             }
 
+            {/* toggle edit state if button is clicked on and show form */}
             {editState === true ? <EditForm setEditState={setEditState} key={recipe.id} recipe={recipe} editHelper={editHelper} /> : <></>}
         </div>
         </>

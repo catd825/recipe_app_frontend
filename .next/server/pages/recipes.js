@@ -455,7 +455,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"CURRENT_USER\", function() { return CURRENT_USER; });\nconst CURRENT_USER = 16;//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9zcmMvY3VycmVudF91c2VyLmpzPzgzZGYiXSwibmFtZXMiOlsiQ1VSUkVOVF9VU0VSIl0sIm1hcHBpbmdzIjoiQUFBQTtBQUFBO0FBQU8sTUFBTUEsWUFBWSxHQUFHLEVBQXJCIiwiZmlsZSI6Ii4vc3JjL2N1cnJlbnRfdXNlci5qcy5qcyIsInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCBjb25zdCBDVVJSRU5UX1VTRVIgPSAxNiJdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./src/current_user.js\n");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"CURRENT_USER\", function() { return CURRENT_USER; });\nconst CURRENT_USER = 20;//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9zcmMvY3VycmVudF91c2VyLmpzPzgzZGYiXSwibmFtZXMiOlsiQ1VSUkVOVF9VU0VSIl0sIm1hcHBpbmdzIjoiQUFBQTtBQUFBO0FBQU8sTUFBTUEsWUFBWSxHQUFHLEVBQXJCIiwiZmlsZSI6Ii4vc3JjL2N1cnJlbnRfdXNlci5qcy5qcyIsInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCBjb25zdCBDVVJSRU5UX1VTRVIgPSAyMCJdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./src/current_user.js\n");
 
 /***/ }),
 

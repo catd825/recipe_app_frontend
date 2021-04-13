@@ -1,8 +1,11 @@
 import { useState } from 'react'
-import { useRouter } from 'next/router'
+// import { useRouter } from 'next/router'
 import { CURRENT_USER } from '../current_user'
+import { useRecipeContext } from '../RecipeContext/state'
 
 export default function EditForm ({ recipe, setEditState, editHelper }) {
+
+    const {recipes, setRecipes} = useRecipeContext();
 
     const current_user = CURRENT_USER
     //Pre-populate input fields with previous data
@@ -55,6 +58,7 @@ export default function EditForm ({ recipe, setEditState, editHelper }) {
         //Toggle edit page to disappear
         setEditState(null)
         editHelper(formData)
+        setRecipes(recipes)
         /*
         //Invoke refresh helper
         if (res.status < 300) {
