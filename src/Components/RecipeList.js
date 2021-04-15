@@ -6,6 +6,7 @@ import { useState } from 'react'
 export default function RecipeList ({ recipes, favorites, currentSelection }) {
     const current_user = CURRENT_USER
 
+    /*
     const [searchValue, setSearchValue] = useState('')
 
     const searchHandler = (e) => {
@@ -15,13 +16,7 @@ export default function RecipeList ({ recipes, favorites, currentSelection }) {
     const searchRecipes = () => {
         return recipes.filter(recipe => recipe.title.toLowerCase().includes(searchValue.toLowerCase()))
     }
-/*
-    searchTransactions = () => {
-        return this.props.transactions.filter(transObj => {
-            return transObj.description.toLowerCase().includes(this.state.searchValue.toLowerCase()) || transObj.category_name.toLowerCase().includes(this.state.searchValue.toLowerCase())
-              })
-        }
-*/
+    */
 
     //filter out recipes the user has created
     const myCreatedRecipes = () => {
