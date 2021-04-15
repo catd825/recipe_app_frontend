@@ -1,9 +1,27 @@
 import RecipeItem from './RecipeItem'
 import SearchBar from './SearchBar'
 import { CURRENT_USER } from '../current_user'
+import { useState } from 'react'
 
 export default function RecipeList ({ recipes, favorites, currentSelection }) {
     const current_user = CURRENT_USER
+
+    const [searchValue, setSearchValue] = useState('')
+
+    const searchHandler = (e) => {
+      setSearchValue(e.target.searchValue);
+    };
+  
+    const searchRecipes = () => {
+        return recipes.filter(recipe => recipe.title.toLowerCase().includes(searchValue.toLowerCase()))
+    }
+/*
+    searchTransactions = () => {
+        return this.props.transactions.filter(transObj => {
+            return transObj.description.toLowerCase().includes(this.state.searchValue.toLowerCase()) || transObj.category_name.toLowerCase().includes(this.state.searchValue.toLowerCase())
+              })
+        }
+*/
 
     //filter out recipes the user has created
     const myCreatedRecipes = () => {
@@ -43,7 +61,7 @@ export default function RecipeList ({ recipes, favorites, currentSelection }) {
 
     return (
         <div style={{textAlign: 'center'}}>
-            <SearchBar />
+            <SearchBar searchHandler={searchHandler} searchValue={searchValue} />
             <div className="cards">
                 {recipeCard()}
             </div>

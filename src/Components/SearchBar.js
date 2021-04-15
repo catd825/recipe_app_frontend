@@ -1,8 +1,7 @@
-const SearchBar = () => {
+const SearchBar = ({ searchHandler, searchValue }) => {
     return (
         <>
-            <input placeholder="search here"></input>
-            <br/><br/>
+            <input placeholder="search here" value={searchValue} onChange={searchHandler} ></input>
         </>
     )
 }
