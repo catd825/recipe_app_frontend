@@ -35,13 +35,6 @@ export default function EditForm ({ recipe, setEditState, editHelper }) {
         submitHandler()
     }
 
-    /*
-    //Define router and helper function to refresh upon edit submission
-    const router = useRouter();
-    const refreshData = () => {
-        router.replace(router.asPath);
-    }
-    */
 
     const submitHandler = async () => {
         const configObj = {
@@ -56,15 +49,29 @@ export default function EditForm ({ recipe, setEditState, editHelper }) {
         const res = await fetch(`http://localhost:3000/recipes/${recipe.id}`, configObj)
         const data = await res.json();
         //Toggle edit page to disappear
-        setEditState(null) && editHelper(formData) && setRecipes(recipes)
+        setEditState(null)
+        editHelper(formData)
+
+        const updatedRecipeArray = recipes.filter(recipe => recipe.id !== data.id)
+
+        setRecipes([
+            ...updatedRecipeArray, data
+        ].sort())
+        console.log(data)
         /*
         //Invoke refresh helper
         if (res.status < 300) {
             refreshData();
         }
         */
-
     }
+
+        // //Define router and helper function to refresh upon edit submission
+        // const router = useRouter();
+        // const refreshData = () => {
+        //     router.replace(router.asPath);
+        // }
+    
     
     return (
         <>
