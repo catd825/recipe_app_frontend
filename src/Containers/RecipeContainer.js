@@ -7,8 +7,7 @@ import { useRecipeContext } from '../RecipeContext/state'
 
 function RecipeContainer() {
 
-  const {recipes, setRecipes, favorites, setFavorites} = useRecipeContext();
-
+  const {recipes, favorites} = useRecipeContext();
   const [recipeSelection, setRecipeSelection] = useState('all');
 
   const changeHandler = (e) => {
@@ -16,8 +15,8 @@ function RecipeContainer() {
       state: e.target.value
     })
   }
+  console.log(recipes.map(recipe => recipe.recipe_creator_id))
 
-  console.log(recipes)
   return (
     <div>
       <RecipeFilter changeHandler={changeHandler} />

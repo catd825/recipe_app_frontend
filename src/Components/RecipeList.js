@@ -5,26 +5,28 @@ import { useState } from 'react'
 
 export default function RecipeList ({ recipes, favorites, currentSelection }) {
     const current_user = CURRENT_USER
-
     const [searchValue, setSearchValue] = useState('')
 
     const searchHandler = (e) => {
       setSearchValue(e.target.value);
-    //   console.log(e.target.value)
     };
   
     const searchRecipes = () => {
         return recipes.filter(recipe => recipe.title.toLowerCase().includes(searchValue.toLowerCase()))
     }
 
+    const searchFavorites = () => {
+        return favorites.filter(recipe => recipe.recipe_name.toLowerCase().includes(searchValue.toLowerCase()))
+    }
+
     //filter out recipes the user has created
     const myCreatedRecipes = () => {
-        return recipes.filter(recipe => recipe.recipe_creator_id === current_user)
+        return searchRecipes().filter(recipe => recipe.recipe_creator_id === current_user)
     }
 
     //filter out recipes that i have liked
     const myFavoriteRecipes = () => {
-        return favorites.filter(favorite => favorite.recipe_liker_id === current_user)
+        return searchFavorites().filter(favorite => favorite.recipe_liker_id === current_user)
     }
 
     //map recipe_ids i have liked
@@ -39,7 +41,7 @@ export default function RecipeList ({ recipes, favorites, currentSelection }) {
             return myCreatedRecipes().map(recipe => 
                 <RecipeItem key={recipe.id} recipes={recipe} />)
         } else if (selection === 'all' || selection === undefined) {
-            return recipes.map(recipe => 
+            return searchRecipes().map(recipe => 
                 <RecipeItem key={recipe.id} recipes={recipe} />)
         } else if (selection === 'saved') {
             return recipes.map(recipe => {
@@ -51,7 +53,7 @@ export default function RecipeList ({ recipes, favorites, currentSelection }) {
             })
         }
     }
-    // console.log(mapFavoriteRecipeIds())
+
 
     return (
         <div style={{textAlign: 'center'}}>
