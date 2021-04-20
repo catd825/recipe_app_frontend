@@ -6,17 +6,16 @@ import { useState } from 'react'
 export default function RecipeList ({ recipes, favorites, currentSelection }) {
     const current_user = CURRENT_USER
 
-    /*
     const [searchValue, setSearchValue] = useState('')
 
     const searchHandler = (e) => {
-      setSearchValue(e.target.searchValue);
+      setSearchValue(e.target.value);
+    //   console.log(e.target.value)
     };
   
     const searchRecipes = () => {
         return recipes.filter(recipe => recipe.title.toLowerCase().includes(searchValue.toLowerCase()))
     }
-    */
 
     //filter out recipes the user has created
     const myCreatedRecipes = () => {
