@@ -56,9 +56,7 @@ export default function EditForm ({ recipe, setEditState, editHelper }) {
         const res = await fetch(`http://localhost:3000/recipes/${recipe.id}`, configObj)
         const data = await res.json();
         //Toggle edit page to disappear
-        setEditState(null)
-        editHelper(formData)
-        setRecipes(recipes)
+        setEditState(null) && editHelper(formData) && setRecipes(recipes)
         /*
         //Invoke refresh helper
         if (res.status < 300) {
