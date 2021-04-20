@@ -8,7 +8,6 @@ const AddToFavorites = ({recipe}) => {
     const {favorites, setFavorites} = useRecipeContext();
 
     const addFavorite = async () => {
-        console.log("add favorite!")
         const favObj = {
             recipe_id: recipe.id,
             recipe_img: recipe.img_url,

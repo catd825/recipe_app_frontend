@@ -107,7 +107,13 @@ const ShowPage = ({ recipe }) => {
             }
 
             {/* toggle edit state if button is clicked on and show form */}
-            {editState === true ? <EditForm setEditState={setEditState} key={recipe.id} recipe={recipe} editHelper={editHelper} /> : <></>}
+            {editState === true ? <EditForm 
+                setEditState={setEditState} 
+                key={recipe.id} 
+                recipe={recipe} 
+                editHelper={editHelper} 
+                formType="Edit" /> 
+            : <></>}
         </div>
         </>
     )

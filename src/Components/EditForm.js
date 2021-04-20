@@ -3,8 +3,8 @@ import { useState } from 'react'
 import { CURRENT_USER } from '../current_user'
 import { useRecipeContext } from '../RecipeContext/state'
 
-export default function EditForm ({ recipe, setEditState, editHelper }) {
-
+export default function EditForm ({ recipe, setEditState, editHelper, formType }) {
+    console.log(formType)
     const {recipes, setRecipes} = useRecipeContext();
 
     const current_user = CURRENT_USER
