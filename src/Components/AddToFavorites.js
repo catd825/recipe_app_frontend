@@ -1,8 +1,11 @@
 import { CURRENT_USER } from '../current_user'
+import { useRecipeContext } from '../RecipeContext/state'
+
 const current_user = CURRENT_USER
 
-
 const AddToFavorites = ({recipe}) => {
+
+    const {favorites, setFavorites} = useRecipeContext();
 
     const addFavorite = async () => {
         console.log("add favorite!")
@@ -24,8 +27,9 @@ const AddToFavorites = ({recipe}) => {
         }
         
         const res = await fetch('http://localhost:3000/favorite_recipes', configObj)
-        const data = await res.json()
-
+        const data = await res.json();
+        const updatedFavorites = [...favorites, data]
+        setFavorites(updatedFavorites)
     }
 
     return(

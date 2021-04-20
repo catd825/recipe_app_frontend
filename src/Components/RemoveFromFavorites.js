@@ -1,6 +1,10 @@
+import { useRecipeContext } from '../RecipeContext/state'
+
 const RemoveFromFavorites = ({ recipe, userFavorite }) => {
 
-    const removeFavorite = () => {
+    const {favorites, setFavorites} = useRecipeContext();
+
+    const removeFavorite = async () => {
         console.log('remove from favorites', userFavorite)
         const configObj = {
             method: 'DELETE',
@@ -9,8 +13,11 @@ const RemoveFromFavorites = ({ recipe, userFavorite }) => {
                 'Accept': 'application/json',
             }
         }
-        fetch(`http://localhost:3000/favorite_recipes/${userFavorite}`, configObj)
-        .then(res => res.json())
+        const res  = await fetch(`http://localhost:3000/favorite_recipes/${userFavorite}`, configObj)
+        const data = await res.json();
+        const updatedFavorites = favorites.filter(favorite => favorite.id !== data.id)
+        setFavorites(updatedFavorites)
+
     }
 
     return(

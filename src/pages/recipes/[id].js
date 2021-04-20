@@ -72,8 +72,7 @@ const ShowPage = ({ recipe }) => {
         let arr = favorites.map(favorite => favorite.recipe_liker_id === current_user && favorite.recipe_id === recipe.id ? favorite.id : null)
         return arr.length > 0 && parseInt(arr.filter(favorite => favorite !== null))
     }
-    console.log(favorites)
-    console.log(userFavorite())
+
     return (
         <> 
         <div className="show-card">

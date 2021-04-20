@@ -15,7 +15,6 @@ function RecipeContainer() {
       state: e.target.value
     })
   }
-  console.log(recipes.map(recipe => recipe.recipe_creator_id))
 
   return (
     <div>
