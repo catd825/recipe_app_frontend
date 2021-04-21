@@ -35,11 +35,10 @@ export const getStaticProps = async (context) => {
     }
 }
 
-
 const ShowPage = ({ recipe }) => {
     const router = useRouter()
     const current_user = CURRENT_USER
-    const {recipes, setRecipes, favorites, setFavorites} = useRecipeContext();
+    const {recipes, setRecipes, favorites} = useRecipeContext();
     const [currentRecipe, setCurrentRecipe] = useState(recipe)
     const [editState, setEditState] = useState(null)
 
@@ -95,14 +94,17 @@ const ShowPage = ({ recipe }) => {
             {/* If not current user and current recipe is saved by user, give option to unsave */}
             {current_user !== recipe.recipe_creator_id && recipeSavedByUser() &&
                 <>
-                    <RemoveFromFavorites userFavorite={userFavorite()} recipe={recipe}/>
+                    <RemoveFromFavorites 
+                    userFavorite={userFavorite()} 
+                    recipe={recipe}/>
                 </>
             }
             
             {/* If not current user and current recipe is saved by user, give option to save */}
             {current_user !== recipe.recipe_creator_id && !recipeSavedByUser() &&
                 <>
-                    <AddToFavorites recipe={recipe}/>
+                    <AddToFavorites 
+                    recipe={recipe}/>
                 </>
             }
 
@@ -113,7 +115,9 @@ const ShowPage = ({ recipe }) => {
                 recipe={recipe} 
                 editHelper={editHelper} 
                 formType="Edit" /> 
-            : <></>}
+                : 
+                <></>
+            }
         </div>
         </>
     )

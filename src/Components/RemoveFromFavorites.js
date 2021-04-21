@@ -1,11 +1,10 @@
 import { useRecipeContext } from '../RecipeContext/state'
 
-const RemoveFromFavorites = ({ recipe, userFavorite }) => {
+const RemoveFromFavorites = ({ userFavorite }) => {
 
     const {favorites, setFavorites} = useRecipeContext();
 
     const removeFavorite = async () => {
-        console.log('remove from favorites', userFavorite)
         const configObj = {
             method: 'DELETE',
             headers: {

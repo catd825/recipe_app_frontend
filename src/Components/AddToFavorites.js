@@ -3,7 +3,7 @@ import { useRecipeContext } from '../RecipeContext/state'
 
 const current_user = CURRENT_USER
 
-const AddToFavorites = ({recipe}) => {
+const AddToFavorites = ({ recipe }) => {
 
     const {favorites, setFavorites} = useRecipeContext();
 
