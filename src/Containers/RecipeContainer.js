@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react'
-// import { CURRENT_USER } from '../current_user'
+import { useState } from 'react'
 import RecipeList from '../Components/RecipeList'
 import RecipeFilter from '../Components/RecipeFilter'
 import { useRecipeContext } from '../RecipeContext/state'
@@ -12,8 +11,9 @@ function RecipeContainer() {
 
   const changeHandler = (e) => {
     setRecipeSelection({ 
-      state: e.target.value
+      state: e.currentTarget.value
     })
+    console.log(recipeSelection)
   }
 
   return (

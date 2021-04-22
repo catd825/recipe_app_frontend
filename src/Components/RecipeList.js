@@ -1,7 +1,7 @@
 import RecipeItem from './RecipeItem'
 import SearchBar from './SearchBar'
 import { CURRENT_USER } from '../current_user'
-import { useState } from 'react'
+import { useState } from 'react' 
 
 export default function RecipeList ({ recipes, favorites, currentSelection }) {
     const current_user = CURRENT_USER

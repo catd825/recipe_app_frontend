@@ -6,14 +6,10 @@ export default function Navbar () {
 
         <div className="navbar">
             <b>
-                Welcome to the recipe app!
-                <br/>
-            <Link href="/recipes/new">
-                Add Recipe 
-            </Link> &nbsp;&nbsp;&nbsp;
-            <Link href="/recipes">
-                Go Home 
-            </Link>  
+                {/* <Link style={{height: '1px'}}href="http://localhost:3001/recipes"> */}
+                    Recipe App
+                    {/* <img src='../images/recipe_logo.png' alt=""/> */}
+                {/* </Link> */}
             </b>
         </div>
     )
