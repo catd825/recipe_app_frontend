@@ -24,6 +24,16 @@
       "static/chunks/webpack.js",
       "static/chunks/pages/_error.js"
     ],
+    "/recipes": [
+      "static/chunks/main.js",
+      "static/chunks/webpack.js",
+      "static/chunks/pages/recipes.js"
+    ],
+    "/recipes/[id]": [
+      "static/chunks/main.js",
+      "static/chunks/webpack.js",
+      "static/chunks/pages/recipes/[id].js"
+    ],
     "/recipes/new": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",

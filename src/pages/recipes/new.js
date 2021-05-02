@@ -1,9 +1,9 @@
-import CreateForm from '../../Components/CreateForm'
+import Form from '../../Components/Form'
 
 export default function NewRecipe () {
     return (
     <>
-        <CreateForm formType="Create" />
+        <Form formType="Create" />
     </>
     )
 }

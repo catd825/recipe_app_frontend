@@ -1,1 +1,1 @@
-export const CURRENT_USER = 27
+export const CURRENT_USER = 25

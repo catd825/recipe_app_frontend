@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import { CURRENT_USER } from '../../current_user'
 import { useState } from 'react'
-import EditForm from '../../Components/EditForm'
+import Form from '../../Components/Form'
 import AddToFavorites from '../../Components/AddToFavorites'
 import RemoveFromFavorites from '../../Components/RemoveFromFavorites'
 import { useRecipeContext } from '../../RecipeContext/state'
@@ -109,7 +109,7 @@ const ShowPage = ({ recipe }) => {
             }
 
             {/* toggle edit state if button is clicked on and show form */}
-            {editState === true ? <EditForm 
+            {editState === true ? <Form 
                 setEditState={setEditState} 
                 key={recipe.id} 
                 recipe={recipe} 
