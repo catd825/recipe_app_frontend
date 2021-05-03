@@ -11,13 +11,13 @@ export default function Form ({ recipe, setEditState, editHelper, formType }) {
     const current_user = CURRENT_USER
     //Pre-populate input fields with previous data
     const formObj = {
-        id: recipe?.id,
+        id: recipe?.id || '',
         recipe_creator_id: current_user, //only for testing before auth fully implemented
-        title: recipe?.title,
-        ingredients: recipe?.ingredients,
-        instructions: recipe?.instructions,
-        img_url: recipe?.img_url,
-        description: recipe?.description
+        title: recipe?.title || '',
+        ingredients: recipe?.ingredients || '',
+        instructions: recipe?.instructions || '',
+        img_url: recipe?.img_url || '',
+        description: recipe?.description || ''
     }
 
     //Set initial formData state to object to edit
