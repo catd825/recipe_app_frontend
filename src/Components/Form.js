@@ -9,7 +9,7 @@ export default function Form ({ recipe, setEditState, editHelper, formType }) {
     const router = useRouter()
 
     const current_user = CURRENT_USER
-    //Pre-populate input fields with previous data
+    // Re-usable for Edit and Create form )
     const formObj = {
         id: recipe?.id || '',
         recipe_creator_id: current_user, //only for testing before auth fully implemented

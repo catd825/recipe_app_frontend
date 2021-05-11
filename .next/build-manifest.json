@@ -24,15 +24,10 @@
       "static/chunks/webpack.js",
       "static/chunks/pages/_error.js"
     ],
-    "/recipes": [
+    "/login": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
-      "static/chunks/pages/recipes.js"
-    ],
-    "/recipes/new": [
-      "static/chunks/main.js",
-      "static/chunks/webpack.js",
-      "static/chunks/pages/recipes/new.js"
+      "static/chunks/pages/login.js"
     ]
   },
   "ampFirstPages": []

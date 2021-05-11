@@ -6,7 +6,7 @@ export const RecipeProvider = ({ children }) => {
     const [recipes, setRecipes] = useState([]);
     const recipeUrl = 'http://localhost:3000/recipes'
     const [favorites, setFavorites] = useState([]);
-    const favoriteRecipeUrl = 'http://localhost:3000/favorite_recipes'
+    const favoriteRecipeUrl = 'http://localhost:3000/favorite_recipes';
 
     useEffect( () => {
         const fetchRecipes = async () => {
@@ -26,7 +26,6 @@ export const RecipeProvider = ({ children }) => {
         };
         fetchFavorites();
       }, []);
-
     return (
         <RecipeContext.Provider value={{ recipes, setRecipes, favorites, setFavorites }}>
             {children}
