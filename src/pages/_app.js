@@ -6,11 +6,11 @@ import { UserProvider } from '../UserContext/state'
 export default function MyApp({ Component, pageProps }) {
   return (
     <Layout>
-      <UserProvider>
+      {/* <UserProvider> */}
         <RecipeProvider>
           <Component {...pageProps} />
         </RecipeProvider>
-      </UserProvider>
+      {/* </UserProvider> */}
     </Layout>
   )
 }

@@ -13,7 +13,6 @@ function RecipeContainer() {
     setRecipeSelection({ 
       state: e.currentTarget.value
     })
-    console.log(recipeSelection)
   }
 
   const [searchValue, setSearchValue] = useState('')
@@ -23,6 +22,7 @@ function RecipeContainer() {
   };
 
   const searchRecipes = () => {
+      // debugger
       return recipes.filter(recipe => recipe.title.toLowerCase().includes(searchValue.toLowerCase()))
   }
 

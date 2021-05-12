@@ -38,12 +38,15 @@ export const UserProvider = ({ children }) => {
             headers: {Authorization: `Bearer ${token}`},
           })
           .then(response => response.json())
-          .then(data => setUser({user: data.user}))
+          .then(data => {
+              setUser({user: data.user})}
+          )
         } else {
             router.push("/signup")
         }
       }
       const loginHandler = (userInfo) => {
+        // debugger
         const configObj = {
           method: 'POST',
           headers: {
@@ -52,15 +55,13 @@ export const UserProvider = ({ children }) => {
           },
           'body': JSON.stringify({user: userInfo})
         }
-      
+        console.log(configObj)
         fetch("http://localhost:3000/api/v1/login", configObj)
         .then(response => response.json())
         .then(data => {
           localStorage.setItem("token", data.jwt)
-          setUser({user: data.user}, () => router.push("/signup"))
-        }
-        )
-      
+          setUser({user: data.user}, () => router.push("/recipes"))
+        })
       }
 
     return (

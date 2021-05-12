@@ -1,6 +1,8 @@
 import { useState } from 'react'
+import { useUserContext } from '../UserContext/state'
 
-export default function Login ({ loginHandler }) {
+export default function Login () {
+    const {loginHandler} = useUserContext();
 
     const userObj = {
         username: '',

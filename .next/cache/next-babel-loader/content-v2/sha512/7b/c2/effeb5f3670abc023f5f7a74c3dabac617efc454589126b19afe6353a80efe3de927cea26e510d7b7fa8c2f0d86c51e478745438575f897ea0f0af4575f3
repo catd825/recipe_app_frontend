@@ -1,0 +1,1 @@
+{"ast":null,"code":"export const CURRENT_USER = 1;","map":{"version":3,"sources":["/Users/catherineadonofrio/Development/code/Mod6/recipe_app/recipe_tracker_frontend/src/current_user.js"],"names":["CURRENT_USER"],"mappings":"AAAA,OAAO,MAAMA,YAAY,GAAG,CAArB","sourcesContent":["export const CURRENT_USER = 1"]},"metadata":{},"sourceType":"module"}
