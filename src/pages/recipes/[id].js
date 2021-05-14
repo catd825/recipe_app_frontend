@@ -6,9 +6,18 @@ import AddToFavorites from '../../Components/AddToFavorites'
 import RemoveFromFavorites from '../../Components/RemoveFromFavorites'
 import { useRecipeContext } from '../../RecipeContext/state'
 
-
 export const getStaticPaths = async () => {
-    const response = await fetch('http://localhost:3000/recipes')
+    
+    const getToken = () => {
+        if (typeof window !== "undefined") {
+            return localStorage.getItem("token")
+        }
+    }
+    const token = getToken()
+    const response = await fetch('http://localhost:3000/recipes', {
+        method: "GET",
+        headers: {Authorization: `Bearer ${token}`},
+      })
     const data = await response.json();
 
     const paths = data.map(recipe => {
@@ -24,8 +33,17 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps = async (context) => {
+    const getToken = () => {
+        if (typeof window !== "undefined") {
+            return localStorage.getItem("token")
+        }
+      }
+    const token = getToken()
     const id = context.params.id; 
-    const response = await fetch('http://localhost:3000/recipes/' + id)
+    const response = await fetch('http://localhost:3000/recipes/' + id, {
+        method: "GET",
+        headers: {Authorization: `Bearer ${token}`},
+      })
     const recipe = await response.json();
 
     return {

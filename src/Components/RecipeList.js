@@ -2,8 +2,9 @@ import RecipeItem from './RecipeItem'
 import { CURRENT_USER } from '../current_user'
 
 export default function RecipeList ({ searchFavorites, searchRecipes, recipes, favorites, currentSelection }) {
-    const current_user = CURRENT_USER
 
+    const current_user = CURRENT_USER().user
+    console.log(current_user)
     //filter out recipes the user has created
     const myCreatedRecipes = () => {
         return searchRecipes.filter(recipe => recipe.recipe_creator_id === current_user)
@@ -36,7 +37,6 @@ export default function RecipeList ({ searchFavorites, searchRecipes, recipes, f
             })
         }
     }
-
 
     return (
         <div style={{textAlign: 'center'}}>

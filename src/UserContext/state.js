@@ -8,16 +8,16 @@ export const UserProvider = ({ children }) => {
     const router = useRouter();
 
     const [user, setUser] = useState(false);
-    const userUrl = 'http://localhost:3000/api/v1/users';
+    // const userUrl = 'http://localhost:3000/api/v1/users';
 
-      useEffect( () => {
-        const fetchUsers = async () => {
-            const response = await fetch(userUrl)
-            const data = await response.json();
-            setUser(data);
-        };
-        fetchUsers();
-      }, []);
+      // useEffect( () => {
+      //   const fetchUsers = async () => {
+      //       const response = await fetch(userUrl)
+      //       const data = await response.json();
+      //       setUser(data);
+      //   };
+      //   fetchUsers();
+      // }, []);
 
       useEffect( () => {
         const token = getToken()

@@ -23,7 +23,8 @@ function RecipeContainer() {
 
   const searchRecipes = () => {
       // debugger
-      return recipes.filter(recipe => recipe.title.toLowerCase().includes(searchValue.toLowerCase()))
+      console.log(recipes)
+      return recipes?.filter(recipe => recipe.title.toLowerCase().includes(searchValue.toLowerCase()))
   }
 
   const searchFavorites = () => {
