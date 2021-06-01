@@ -5,12 +5,12 @@ import { UserProvider } from '../UserContext/state'
 
 export default function MyApp({ Component, pageProps }) {
   return (
-    <Layout>
-      <UserProvider>
-        <RecipeProvider>
-          <Component {...pageProps} />
-        </RecipeProvider>
-      </UserProvider>
-    </Layout>
+    <UserProvider>
+      <Layout>
+          <RecipeProvider>
+            <Component {...pageProps} />
+          </RecipeProvider>
+      </Layout>
+    </UserProvider>
   )
 }

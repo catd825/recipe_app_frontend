@@ -24,47 +24,36 @@ export default function RecipeItem ({ recipes }) {
     return(
         <> 
         <Card className={classes.root}>
-      <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image={recipes.img_url}
-          title={recipes.title}
-          style={{width:'400px'}}
+          <CardActionArea>
+            <CardMedia
+              className={classes.media}
+              image={recipes.img_url}
+              title={recipes.title}
+              style={{width:'400px'}}
 
-        />
-        <Link key={recipes.id} href={'/recipes/' + recipes.id}>
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            {recipes.title}
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            {recipes.description}
-          </Typography>
-        </CardContent>
-        </Link>
-      </CardActionArea>
-      
-      <CardActions>
-        {/* <Button size="small" color="primary">
-          Share
-        </Button> */}
-        <Button size="small" color="primary">
-            <Link key={recipes.id} href={'/recipes/' + recipes.id}>{recipes.title}</Link>
-        </Button>
-      </CardActions>
-    </Card>
-
-
-            {/* <div className="card"> 
-                <img src={recipes.img_url} style={{height:'250px'}} className="img-card" alt='' />
-                <p>
-                    <Link key={recipes.id} href={'/recipes/' + recipes.id}>{recipes.title}</Link>
-                </p>
-                <p>
-                    {recipes.description}
-                </p>
-            </div> */}
-        </>
+            />
+            <Link key={recipes.id} href={'/recipes/' + recipes.id}>
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="h2">
+                {recipes.title}
+              </Typography>
+              <Typography variant="body2" color="textSecondary" component="p">
+                {recipes.description}
+              </Typography>
+            </CardContent>
+            </Link>
+          </CardActionArea>
+          
+          <CardActions>
+            {/* <Button size="small" color="primary">
+              Share
+            </Button> */}
+            <Button size="small" color="primary">
+                <Link key={recipes.id} href={'/recipes/' + recipes.id}>{recipes.title}</Link>
+            </Button>
+          </CardActions>
+        </Card>
+      </>
     )
 }
 

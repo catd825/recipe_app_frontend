@@ -29,7 +29,7 @@ export default function Login () {
 
     return (
         <div>
-            <h2>Login</h2>
+            <h2>Signup</h2>
             <form onSubmit={submitHandler}>
                 <input name="username" onChange={changeHandler} value={userData.username} type="text" placeholder="Username"></input> <br/>
                 <input name="password" onChange={changeHandler} value={userData.password} type="password" placeholder="Password"></input> <br/>

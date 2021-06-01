@@ -6,18 +6,7 @@ const UserContext = createContext(); //creates a store
 export const UserProvider = ({ children }) => {
 
     const router = useRouter();
-
     const [user, setUser] = useState(false);
-    // const userUrl = 'http://localhost:3000/api/v1/users';
-
-      // useEffect( () => {
-      //   const fetchUsers = async () => {
-      //       const response = await fetch(userUrl)
-      //       const data = await response.json();
-      //       setUser(data);
-      //   };
-      //   fetchUsers();
-      // }, []);
 
       useEffect( () => {
         const token = getToken()
@@ -59,7 +48,7 @@ export const UserProvider = ({ children }) => {
         .then(response => response.json())
         .then(data => {
           localStorage.setItem("token", data.jwt)
-          setUser({user: data.user}, () => router.push("/recipes"))
+          setUser({user: data.user}, router.push("/recipes"))
         })
       }
 
@@ -76,13 +65,20 @@ export const UserProvider = ({ children }) => {
         .then(response => response.json())
         .then(data => {
           localStorage.setItem("token", data.jwt)
-          setUser({user: data.user}, () => router.push("/recipes"))
+          setUser({user: data.user}, router.push("/recipes"))
         })
       }
+
+      const logOutHandler = () => {
+        localStorage.removeItem("token")
+        router.push("/login")
+        setUser({user: false})
+      }
+
     console.log(user)
     return (
 
-        <UserContext.Provider value={{ user, loginHandler, signupHandler }}>
+        <UserContext.Provider value={{ user, loginHandler, signupHandler, logOutHandler }}>
             {children}
         </UserContext.Provider>
     )

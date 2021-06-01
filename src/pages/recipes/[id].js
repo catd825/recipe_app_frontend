@@ -19,7 +19,6 @@ export const getStaticPaths = async () => {
         headers: {Authorization: `Bearer ${token}`},
       })
     const data = await response.json();
-
     const paths = data.map(recipe => {
         return {
             params: { id: recipe.id.toString() }
