@@ -46,7 +46,6 @@ export const UserProvider = ({ children }) => {
         }
       }
       const loginHandler = (userInfo) => {
-        // debugger
         const configObj = {
           method: 'POST',
           headers: {
@@ -64,8 +63,26 @@ export const UserProvider = ({ children }) => {
         })
       }
 
+      const signupHandler = (userInfo) => {
+        const configObj = {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+          'body': JSON.stringify({user: userInfo})
+        }
+        fetch("http://localhost:3000/api/v1/users", configObj)
+        .then(response => response.json())
+        .then(data => {
+          localStorage.setItem("token", data.jwt)
+          setUser({user: data.user}, () => router.push("/recipes"))
+        })
+      }
+    console.log(user)
     return (
-        <UserContext.Provider value={{ user, loginHandler }}>
+
+        <UserContext.Provider value={{ user, loginHandler, signupHandler }}>
             {children}
         </UserContext.Provider>
     )
