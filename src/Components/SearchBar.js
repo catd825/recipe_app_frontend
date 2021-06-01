@@ -8,7 +8,8 @@ const useStyles = makeStyles((theme) => ({
         width: '25ch',
       },
     },
-  }));
+  })
+);
 
 const SearchBar = ({ searchHandler, searchValue }) => {
     return (

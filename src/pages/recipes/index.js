@@ -1,8 +1,11 @@
 // import '../Home.css';
 import Head from 'next/head'
 import RecipeContainer from '../../Containers/RecipeContainer'
+import { useRecipeContext } from '../../RecipeContext/state'
 
 export default function Home() {
+  const {recipes} = useRecipeContext();
+
   return (
     <>
     <Head> 
@@ -14,7 +17,8 @@ export default function Home() {
       </style>
     </Head>
     <div>
-        <RecipeContainer />
+        { recipes ? <RecipeContainer /> : 'you need to log in'}
+
     </div>
     </>
   );

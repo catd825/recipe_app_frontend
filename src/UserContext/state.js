@@ -31,7 +31,7 @@ export const UserProvider = ({ children }) => {
               setUser({user: data.user})}
           )
         } else {
-            router.push("/signup")
+            router.push("/login")
         }
       }
       const loginHandler = (userInfo) => {
@@ -43,7 +43,6 @@ export const UserProvider = ({ children }) => {
           },
           'body': JSON.stringify({user: userInfo})
         }
-        console.log(configObj)
         fetch("http://localhost:3000/api/v1/login", configObj)
         .then(response => response.json())
         .then(data => {
@@ -70,9 +69,9 @@ export const UserProvider = ({ children }) => {
       }
 
       const logOutHandler = () => {
-        localStorage.removeItem("token")
+        localStorage.clear()
         router.push("/login")
-        setUser({user: false})
+        setUser({user: false}, () => console.log(user))
       }
 
     console.log(user)

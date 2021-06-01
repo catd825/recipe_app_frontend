@@ -1,11 +1,12 @@
-import { CURRENT_USER } from '../current_user'
+import { useUserContext } from '../UserContext/state'
 import { useRecipeContext } from '../RecipeContext/state'
 
-const current_user = CURRENT_USER
 
 const AddToFavorites = ({ recipe }) => {
 
     const {favorites, setFavorites} = useRecipeContext();
+    const {user} = useUserContext();
+    const current_user = user.user.id
 
     const addFavorite = async () => {
         const favObj = {

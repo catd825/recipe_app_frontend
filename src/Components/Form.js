@@ -2,14 +2,15 @@ import { useState } from 'react'
 import { CURRENT_USER } from '../current_user'
 import { useRouter } from 'next/router'
 import { useRecipeContext } from '../RecipeContext/state'
+import { useUserContext } from '../UserContext/state'
 
 export default function Form ({ recipe, setEditState, editHelper, formType }) {
-    console.log(formType)
     const {recipes, setRecipes} = useRecipeContext();
     const router = useRouter()
+    const {user} = useUserContext();
+    const current_user = user.user.id
 
-    const current_user = CURRENT_USER
-    // Re-usable for Edit and Create form )
+    // Re-usable for Edit and Create form 
     const formObj = {
         id: recipe?.id || '',
         recipe_creator_id: current_user, //only for testing before auth fully implemented

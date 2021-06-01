@@ -1,23 +1,22 @@
 import { useRouter } from 'next/router'
-import { CURRENT_USER } from '../../current_user'
 import { useState } from 'react'
 import Form from '../../Components/Form'
 import AddToFavorites from '../../Components/AddToFavorites'
 import RemoveFromFavorites from '../../Components/RemoveFromFavorites'
 import { useRecipeContext } from '../../RecipeContext/state'
+import { useUserContext } from '../../UserContext/state'
 
 export const getStaticPaths = async () => {
-    
-    const getToken = () => {
-        if (typeof window !== "undefined") {
-            return localStorage.getItem("token")
+        const getToken = () => {
+            if (typeof window !== "undefined") {
+                return localStorage.getItem("token")
+            }
         }
-    }
-    const token = getToken()
-    const response = await fetch('http://localhost:3000/recipes', {
-        method: "GET",
-        headers: {Authorization: `Bearer ${token}`},
-      })
+        const token = getToken()
+        const response = await fetch('http://localhost:3000/recipes', {
+            method: "GET",
+            headers: {Authorization: `Bearer ${token}`},
+        })
     const data = await response.json();
     const paths = data.map(recipe => {
         return {
@@ -54,7 +53,8 @@ export const getStaticProps = async (context) => {
 
 const ShowPage = ({ recipe }) => {
     const router = useRouter()
-    const current_user = CURRENT_USER
+    const {user} = useUserContext();
+    const current_user = user.user.id
     const {recipes, setRecipes, favorites} = useRecipeContext();
     const [currentRecipe, setCurrentRecipe] = useState(recipe)
     const [editState, setEditState] = useState(null)

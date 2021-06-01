@@ -17,9 +17,7 @@ const useStyles = makeStyles({
     },
   });
 
-
 export default function RecipeItem ({ recipes }) {
-
     const classes = useStyles();
     return(
         <> 

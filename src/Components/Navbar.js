@@ -17,7 +17,7 @@ export default function Navbar () {
                 </Link>
             </>
             :
-                "something else!!"
+                null
             }
         </div>
     )

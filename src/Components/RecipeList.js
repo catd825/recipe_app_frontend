@@ -1,9 +1,9 @@
 import RecipeItem from './RecipeItem'
-import { CURRENT_USER } from '../current_user'
+import { useUserContext } from '../UserContext/state'
 
-export default function RecipeList ({ searchFavorites, searchRecipes, recipes, favorites, currentSelection }) {
-
-    const current_user = CURRENT_USER().user
+export default function RecipeList ({ searchFavorites, searchRecipes, recipes, currentSelection }) {
+    const {user} = useUserContext();
+    const current_user = user.user.id
     console.log(current_user)
     //filter out recipes the user has created
     const myCreatedRecipes = () => {
